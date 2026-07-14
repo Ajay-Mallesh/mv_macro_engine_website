@@ -1,0 +1,1982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Multi-Voltage Macro Engine: RTL to GDSII - 32nm Multi-Voltage ASIC Design Reference">
+    <meta name="author" content="Ajay Mallesh">
+    <title>MV Macro Engine Website | Multi-Voltage ASIC Design Documentation</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" href="favicon_io/apple-touch-icon.png">
+</head>
+<body>
+    <!-- ===================================================================
+         NAVIGATION BAR
+         =================================================================== -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#home" data-page="home" class="logo">
+                <img src="favicon-32x32.png" alt="MV Macro Engine Logo" class="logo-img">
+                <span>MV Macro Engine</span>
+            </a>
+            <button class="menu-toggle">☰</button>
+            <ul>
+                <!-- Home -->
+                <li>
+                    <a href="#home" data-page="home">Home</a>
+                </li>
+
+                <!-- Input Files Dropdown -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Input Files ▼</a>
+                    <ul class="submenu">
+                        <li><a href="#rtl" data-page="rtl">RTL</a></li>
+                        <li><a href="#upf" data-page="upf">UPF</a></li>
+                        <li><a href="#sdc" data-page="sdc">SDC</a></li>
+                    </ul>
+                </li>
+
+                <!-- Scripts Dropdown -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Scripts ▼</a>
+                    <ul class="submenu">
+                        <li><a href="#synthesis" data-page="synthesis">Synthesis</a></li>
+                        <li><a href="#floorplan" data-page="floorplan">Floorplan-to-Powerplan</a></li>
+                        <li><a href="#placement" data-page="placement">Placement</a></li>
+                        <li><a href="#cts" data-page="cts">CTS</a></li>
+                        <li><a href="#routing" data-page="routing">Routing</a></li>
+                        <li><a href="#signoff" data-page="signoff">Signoff</a></li>
+                        <li><a href="#drv-fixes" data-page="drv-fixes">DRV Fixes</a></li>
+                        <li><a href="#setup-fixes" data-page="setup-fixes">Setup Fixes</a></li>
+                    </ul>
+                </li>
+
+                <!-- Shapes Dropdown -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Timing Closure ▼</a>
+                    <ul class="submenu">
+                        <li><a href="#STARRC" data-page="STARRC">STARRC</a></li>
+                        <li><a href="#PRIMETIME" data-page="PRIMETIME">PRIMETIME</a></li>
+                    </ul>
+                </li>
+
+                <!-- Manual -->
+                <li>
+                    <a href="#manual" data-page="manual">Manual</a>
+                </li>
+
+                <!-- Extra Files -->
+                <li>
+                    <a href="#xtra-files" data-page="xtra-files">Xtra Files</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===================================================================
+         MAIN CONTENT AREA
+         =================================================================== -->
+    <main>
+        <!-- HOME PAGE -->
+        <div id="home" class="page active">
+            <div class="hero">
+                <h1>Multi-Voltage Macro Engine</h1>
+                <p class="subtitle">RTL to GDSII (Vol. 1)</p>
+                <p class="subtitle">32nm Multi-Voltage ASIC Design Reference</p>
+                <p class="subtitle">(0.95V / 0.75V Dual Supply Physical Design Methodology)</p>
+                <p class="description" style="margin-top: 1.5rem;">
+                    The Complete Implementation Guide
+                </p>
+            </div>
+
+<section class="section">
+    <h2>Project Overview</h2>
+    <p>
+        Welcome to the <strong>Multi-Voltage Macro Engine project</strong> — a comprehensive RTL-to-GDSII design flow 
+        reference for a <strong>high-performance cryptographic accelerator</strong> implemented in <strong>32nm CMOS technology</strong>. 
+        This project demonstrates industry-standard ASIC design methodologies for multi-voltage systems with ~600K instances pre-synthesis.
+    </p>
+
+    <div class="meta-info">
+        <div class="meta-card">
+            <h3>Project Creator</h3>
+            <p><strong>Author:</strong> Ajay Mallesh</p>
+            <p><strong>Reviewer:</strong> Gemini Pro 3.1 & Ajay Mallesh</p>
+        </div>
+        <div class="meta-card">
+            <h3>Version Info</h3>
+            <p><strong>Version:</strong> 1.0.0 (2026)</p>
+            <p><strong>Date:</strong> 14/07/2026</p>
+        </div>
+        <div class="meta-card">
+            <h3>GitHub Repository</h3>
+            <a href="https://github.com/Ajay-Mallesh/mv_macro_engine_project_files" class="btn github-btn" target="_blank">
+                Visit GitHub Repository
+            </a>
+        </div>
+    </div>
+
+
+        <p class="project-tagline">
+            "This project is generated with <span class="highlight-brand">Gemini Pro 3.1</span> and crafted by <span class="highlight-author">Ajay Mallesh</span> with ❤️"
+            <br><br>
+            <strong>Project Contributors:</strong> 
+            <span style="color: white;">Aviraj Dhale | Selva Prakash | Venkatesh Vattem | Praveen |</span>
+            <br>
+            whose contributions across development, testing, and feature enhancements helped shape this project.
+        </p>
+
+
+        <!-- NEW: Completely Separate Prerequisites Section -->
+            <section class="section prerequisites-section">
+            <h2 class="section-title-with-arrow">Prerequisites</h2>
+            
+            <div class="tech-libraries-container">
+                <div class="lib-split-columns">
+                    
+                    <div class="lib-column-section">
+                        <h3 class="lib-section-title"><span class="lib-prefix">//</span> LIBs Required</h3>
+                        <div class="lib-files-stack">
+                            <div class="lib-file-badge">
+                                <span class="lib-bullet">■</span>
+                                <span class="lib-filename">saed32rvt_ss0p95v125c.db</span>
+                            </div>
+                            <div class="lib-file-badge">
+                                <span class="lib-bullet">■</span>
+                                <span class="lib-filename">saed32rvt_ss0p75v125c.db</span>
+                            </div>
+                            <div class="lib-file-badge">
+                                <span class="lib-bullet">■</span>
+                                <span class="lib-filename">saed32rvl_ss0p95v125c_i0p75v.db</span>
+                            </div>
+                            <div class="lib-file-badge">
+                                <span class="lib-bullet">■</span>
+                                <span class="lib-filename">saed32rvl_dlvl_ss0p75v125c_i0p95v.db</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lib-column-section">
+                        <h3 class="lib-section-title"><span class="lib-prefix">//</span> NDMs Required</h3>
+                        <div class="lib-files-stack">
+                            <div class="lib-file-badge">
+                                <span class="lib-bullet">■</span>
+                                <span class="lib-filename">saed32_lp9m_tech.ndm</span>
+                            </div>
+                            <div class="lib-file-badge">
+                                <span class="lib-bullet">■</span>
+                                <span class="lib-filename">saed32_hvt.ndm</span>
+                            </div>
+                            <div class="lib-file-badge">
+                                <span class="lib-bullet">■</span>
+                                <span class="lib-filename">saed32_lvt.ndm</span>
+                            </div>
+                            <div class="lib-file-badge">
+                                <span class="lib-bullet">■</span>
+                                <span class="lib-filename">saed32_rvt.ndm</span>
+                            </div>
+                            <div class="lib-file-badge">
+                                <span class="lib-bullet">■</span>
+                                <span class="lib-filename">saed32_sram_lp.ndm</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+            
+
+            <section class="section">
+                <h2>Technology Specifications</h2>
+                <table class="specs-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Specification</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Technology Node</td>
+                            <td>32nm CMOS</td>
+                        </tr>
+                        <tr>
+                            <td>Design Type</td>
+                            <td>Multi-Voltage ASIC</td>
+                        </tr>
+                        <tr>
+                            <td>Core Type</td>
+                            <td>Macro Engine (mv_macro_engine)</td>
+                        </tr>
+                        <tr>
+                            <td>Instance Count</td>
+                            <td>76K Instances</td>
+                        </tr>
+                        <tr>
+                            <td>Macro Count & Type</td>
+                            <td>100 Hard Macros (16 lp_ram_subsystem SRAMs + 84 Default)</td>
+                        </tr>
+                        <tr>
+                            <td>Voltage Domains</td>
+                            <td>0.95V / 0.75V</td>
+                        </tr>
+                        <tr>
+                            <td>Flow Style</td>
+                            <td>RTL → GDSII</td>
+                        </tr>
+                        <tr>
+                            <td>Primary Tools</td>
+                            <td>Synopsys / Cadence</td>
+                        </tr>
+                        <tr>
+                            <td>Timing Methodology</td>
+                            <td>MCMM</td>
+                        </tr>
+                        <tr>
+                            <td>Signoff Style</td>
+                            <td>PrimeTime / StarRC</td>
+                        </tr>
+                        <tr>
+                            <td>Power Strategy</td>
+                            <td>Multi-Domain Mesh PDN (with VDDL Guard Bands)</td>
+                        </tr>
+                        <tr>
+                            <td>Clocking</td>
+                            <td>H-Tree CTS + NDR (Double Spacing)</td>
+                        </tr>
+                        <tr>
+                            <td>Target Audience</td>
+                            <td>Physical Design Engineers / ASIC Architects</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+<section class="section">
+                <h2>Project Introduction</h2>
+                <h3>Multi-Voltage Macro Engine Architecture</h3>
+                <p>
+                    The <strong>mv_macro_engine</strong> project is a high-performance multi-voltage ASIC design implemented in 32nm CMOS technology. 
+                    It features a robust architecture comprising <strong>76K standard cells</strong> and <strong>100 hard macros</strong>, including 16 <code>lp_ram_subsystem</code> SRAMs and 84 default hard macros.
+                </p>
+                <p>
+                    To optimize for power efficiency and meet strict SoC thermal constraints, the design employs a <strong>dual-voltage architecture</strong> based on aggressive voltage scaling. 
+                    The logic is partitioned into two distinct domains:
+                </p>
+
+                <h3>Voltage Domains</h3>
+                <p>The design is divided into two voltage domains:</p>
+                <ul class="features-list">
+                    <li><strong>High-Performance Domain (0.95V / VDD):</strong> This domain houses the primary computational engine and high-speed logic. 
+                        It operates at 0.95V to ensure maximum throughput and timing closure, utilizing the <code>saed32rvt_ss0p95v125c.db</code> library.</li>
+                    <li><strong>Low-Power Domain (0.75V / VDDL):</strong> This domain incorporates the memory subsystems and low-speed control logic. 
+                        By operating at 0.75V, the design significantly minimizes both dynamic switching power and static leakage. 
+                        It utilizes the <code>saed32rvt_ss0p75v125c.db</code> library, optimized for low-voltage operation.</li>
+                </ul>
+
+                <h3>Physical Design Challenges</h3>
+                <p>The multi-voltage architecture of the <strong>mv_macro_engine</strong> introduces several sophisticated backend design requirements:</p>
+                <ul class="features-list">
+                    <li><strong>UPF-based Power Intent Integration:</strong> Seamless integration of logical power intent with the physical design database.</li>
+                    <li><strong>Level Shifter Management:</strong> Ensuring signal integrity for all crossings between the 0.75V and 0.95V domains using dedicated <code>ulvl</code> and <code>dlvl</code> level shifters.</li>
+                    <li><strong>Macro-Centric Floorplanning:</strong> Strategic placement of 100 hard macros, including memory subsystems, while maintaining routability and minimizing wire detours.</li>
+                    <li><strong>Dedicated Voltage Areas & PDN:</strong> Implementation of a multi-domain mesh Power Delivery Network (PDN) featuring VDDL guard bands for the low-power engine.</li>
+                    <li><strong>H-Tree Clock Distribution:</strong> Managing an H-Tree clock topology to minimize skew while handling voltage-level crossings at the clock spine.</li>
+                    <li><strong>MCMM Timing Analysis:</strong> Balancing timing closure across complex multi-corner multi-mode scenarios to ensure robustness across process, voltage, and temperature variations.</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2>Design Tools</h2>
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h4>Synopsys Design Compiler</h4>
+                        <p>RTL synthesis, logic optimization, and DFT insertion for gate-level netlist generation.</p>
+                    </div>
+                    <div class="content-card">
+                        <h4>Synopsys ICC2</h4>
+                        <p>Physical design implementation including floorplanning, placement, CTS, and routing.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Copyright & Legal Information</h2>
+                <p>
+                    <strong>© 2026 Ajay Mallesh.</strong> This project is open-source and released for educational and non-commercial community use. 
+                    You are free to use, modify and distribute this project in accordance with the project license.
+                </p>
+                <p>
+                    <strong>Author:</strong> Ajay Mallesh | 
+                    <strong>Email:</strong> <a href="mailto:ajaymalavalli912@gmail.com" style="color: var(--highlight-color);">ajaymalavalli912@gmail.com</a> | 
+                    <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ajaymallesh" target="_blank" style="color: var(--highlight-color);">www.linkedin.com/in/ajaymallesh</a>
+                </p>
+                <p>
+                    <strong>Project Contributors:</strong><br>
+                    LinkedIn: Aviraj Dhale : <a href="https://www.linkedin.com/in/avirajdhale/" target="_blank" style="color: var(--highlight-color);">https://www.linkedin.com/in/avirajdhale/</a><br>
+                    LinkedIn: Selva Prakash : <a href="https://www.linkedin.com/in/selva-prakash1911/" target="_blank" style="color: var(--highlight-color);">https://www.linkedin.com/in/selva-prakash1911/</a><br>
+                    LinkedIn: Venkatesh Vattem : <a href="https://www.linkedin.com/in/venkateshvattem" target="_blank" style="color: var(--highlight-color);">https://www.linkedin.com/in/venkateshvattem</a>
+                </p>
+            </section>
+
+                <h3 style="margin-top: 2rem;">Legal Disclaimer</h3>
+                <p>
+                    The methodologies, TCL examples, UPF constructs, synthesis flows, timing constraints and physical implementation strategies 
+                    described in this documentation are intended exclusively for educational and research purposes.
+                </p>
+                <p>
+                    <strong>Tool commands and flows may vary depending on:</strong>
+                </p>
+                <ul class="features-list">
+                    <li>Tool version</li>
+                    <li>Process node</li>
+                    <li>Foundry NDA constraints</li>
+                    <li>Technology LEF/DEF structure</li>
+                    <li>Extraction deck version</li>
+                    <li>Signoff correlation methodology</li>
+                    <li>EDA vendor implementation changes</li>
+                </ul>
+                <p style="margin-top: 1.5rem;">
+                    <strong>The author assumes no responsibility for:</strong> silicon failure, timing closure loss, LVS/DRC violations, 
+                    power collapse, EM degradation, tape-out delay, or fabrication loss arising from improper application of the concepts described herein.
+                </p>
+            </section>
+        </div>
+
+        <!-- INPUT FILES PAGES -->
+        <!-- RTL Page -->
+        <div id="rtl" class="page">
+            <section class="section">
+                <h2>RTL - Multi-Voltage Macro Engine</h2>
+                <p>
+                    Designed a <strong>128-bit cryptographic accelerator</strong> using a <strong>multi-voltage architecture</strong> 
+                    to optimize both power consumption and performance in ASIC-based systems. The design separates functionality into a 
+                    <strong>0.75V low-power domain</strong> for key generation and a <strong>0.95V high-performance domain</strong> 
+                    for encryption processing, demonstrating practical power-aware digital design techniques.
+                </p>
+
+                <h3>Architecture Overview</h3>
+                <p>
+                    The low-power block generates a pseudo-random keystream using a <strong>128-bit LFSR-based key scheduler</strong>, 
+                    while the high-performance encryption engine implements a <strong>64-round Substitution-Permutation Network (SPN)</strong> architecture. 
+                    A dedicated voltage-domain interface safely transfers key data between domains, reflecting real-world ASIC design practices 
+                    for power-domain integration.
+                </p>
+
+                <h3>Key Features</h3>
+                <ul class="features-list">
+                    <li>128-bit encryption datapath with configurable architecture</li>
+                    <li>Low-power key generation operating at 0.75V</li>
+                    <li>High-performance cipher core operating at 0.95V</li>
+                    <li>Safe voltage-domain crossing through interface registers</li>
+                    <li>64-round SPN-based encryption engine</li>
+                    <li>Parallel 4-bit S-Box implementation for non-linear transformations</li>
+                    <li>Deep pipelining for improved throughput and timing performance</li>
+                    <li>Fully synthesizable and modular Verilog RTL</li>
+                </ul>
+
+                <h3>Applications</h3>
+                <p>
+                    Secure SoCs, IoT security accelerators, embedded cryptographic engines, hardware security modules (HSMs), 
+                    and power-constrained ASIC designs.
+                </p>
+
+                <h3>Skills Demonstrated</h3>
+                <ul class="features-list">
+                    <li>Verilog RTL Design</li>
+                    <li>Multi-Voltage Design</li>
+                    <li>Cryptographic Hardware Architecture</li>
+                    <li>ASIC Design Methodology</li>
+                    <li>Power-Aware Digital Design</li>
+                    <li>Pipelined Datapath Design</li>
+                    <li>Parameterized Hardware Development</li>
+                </ul>
+
+                <a href="https://github.com/Ajay-Mallesh/mv_macro_engine_project_files/tree/main/rtl/Fixed_fanouts" target="_blank" class="btn">
+                    View RTL Source on GitHub
+                </a>
+            </section>
+        </div>
+
+        <!-- UPF Page -->
+<div id="upf" class="page">
+            <section class="section">
+                <h2>UPF - Multi-Voltage Power Intent Design</h2>
+                <p>
+                    Developed a <strong>silicon-ready Unified Power Format (UPF)</strong> specification for the <strong>mv_macro_engine</strong>, 
+                    enabling power-aware implementation and verification across multiple voltage domains. The power architecture partitions the design 
+                    into a <strong>0.95V high-performance domain</strong> and a <strong>0.75V low-power domain</strong>, optimizing overall power 
+                    consumption while maintaining system functionality and reliability.
+                </p>
+
+                <h3>Power Intent Architecture</h3>
+                <p>
+                    The UPF defines dedicated power domains, supply ports, supply nets, and domain-specific power connections to accurately capture 
+                    the <strong>mv_macro_engine</strong> power intent. Voltage states and a <strong>Power State Table (PST)</strong> were created to model valid operating modes, 
+                    ensuring correct behavior during power-aware simulation and implementation. Level shifter strategies were also specified to safely 
+                    manage signal transfers between voltage domains, addressing voltage compatibility requirements during physical design.
+                </p>
+
+                <h3>Key Features</h3>
+                <ul class="features-list">
+                    <li>Defined separate power domains for high-performance and low-power functional blocks</li>
+                    <li>Created supply ports, supply nets, and primary power/ground connections</li>
+                    <li>Configured voltage operating states for 0.95V and 0.75V domains</li>
+                    <li>Developed Power State Tables (PST) to represent valid system power modes</li>
+                    <li>Specified low-to-high and high-to-low level shifter insertion strategies</li>
+                    <li>Enabled power-aware simulation, synthesis, place-and-route, and signoff flows</li>
+                    <li>Designed according to industry-standard low-power ASIC methodologies</li>
+                    <li>Supported seamless integration between RTL, UPF, and physical design implementation</li>
+                </ul>
+
+                <h3>Applications</h3>
+                <p>
+                    Low-power ASICs, <strong>mv_macro_engine</strong> cryptographic accelerators, IoT SoCs, edge computing devices, battery-powered systems, 
+                    and advanced multi-voltage semiconductor designs.
+                </p>
+
+                <h3>Skills Demonstrated</h3>
+                <ul class="features-list">
+                    <li>UPF (Unified Power Format)</li>
+                    <li>Low-Power Design Techniques</li>
+                    <li>Multi-Voltage Architecture</li>
+                    <li>Power Domain Management</li>
+                    <li>Level Shifter Implementation</li>
+                    <li>Power State Table (PST) Development</li>
+                    <li>Power-Aware Verification</li>
+                    <li>ASIC Physical Design Methodology</li>
+                    <li>SoC Power Intent Specification</li>
+                </ul>
+
+                <h3>UPF Versioning</h3>
+                <p>
+                    The project provides two versions of the UPF specification:
+                </p>
+                <ul class="features-list">
+                    <li><strong>UPF 1.0:</strong> Provides the foundational power intent definitions suitable for standard flows and baseline power-domain verification.</li>
+                    <li><strong>UPF 2.0:</strong> Offers enhanced semantics for complex power state transitions, improved handling of hierarchical power domains, and more rigorous support for advanced multi-voltage design features required in modern EDA toolsets.</li>
+                </ul>
+
+                <h3>Key Achievement</h3>
+                <p>
+                    Successfully defined and implemented a complete UPF-based power intent for the <strong>mv_macro_engine</strong>, 
+                    enabling safe cross-domain communication, power-aware verification, and silicon-ready low-power ASIC implementation.
+                </p>
+
+                <div style="background-color: #f0f9ff; border-left: 4px solid var(--accent-color); padding: 1rem; margin-bottom: 1.5rem;">
+                    <p style="margin: 0; color: #334155;font-family: inherit;"><strong>Note:</strong> You can use either UPF version (v1.0 or v2.0) depending on your specific tool flow requirements and methodology constraints. Both are fully compatible with the <strong>mv_macro_engine</strong> design.</p>
+                </div>
+
+                <a href="https://github.com/Ajay-Mallesh/mv_macro_engine_project_files/blob/main/upf/upf%201.0/mv_power_intent_v1.upf" target="_blank" class="btn">
+                    View UPF v1.0 File on GitHub
+                </a>
+                <a href="https://github.com/Ajay-Mallesh/mv_macro_engine_project_files/blob/main/upf/upf%202.0/mv_power_intent.upf" target="_blank" class="btn">
+                    View UPF v2.0 File on GitHub    
+                </a>
+            </section>
+        </div>
+
+        <!-- SDC Page -->
+        <div id="sdc" class="page">
+            <section class="section">
+                <h2>SDC - Synthesis Timing Constraints</h2>
+                
+                <h3>SDC for Synthesis (Only)</h3>
+                <p>
+                    Developed a synthesis-focused Synopsys Design Constraints (SDC) file for the <strong>mv_macro_engine</strong>, 
+                    defining the timing and design-rule requirements required for logic synthesis and optimization. The constraint set establishes 
+                    clock definitions, I/O timing budgets, transition limits, fanout restrictions, and load assumptions to guide synthesis tools 
+                    toward achieving timing closure and producing an optimized gate-level netlist.
+                </p>
+
+                <h3>Synthesis Constraint Features</h3>
+                <ul class="features-list">
+                    <li>Defined primary clock and virtual clock constraints</li>
+                    <li>Applied input and output delay budgets for timing-driven synthesis</li>
+                    <li>Configured maximum fanout and transition limits for signal integrity</li>
+                    <li>Specified output load and input transition characteristics</li>
+                    <li>Enabled timing optimization and synthesis-driven design rule checking</li>
+                    <li>Generated synthesis-ready constraints for gate-level netlist creation</li>
+                    <li>Separated synthesis constraints from physical design timing signoff requirements</li>
+                </ul>
+
+                <h3>Synthesis Constraints Details</h3>
+                <p>
+                    The SDC includes a <strong>500 MHz system clock (2 ns period)</strong>, input/output delay constraints, maximum fanout limits, 
+                    transition constraints, and load modeling to accurately represent the intended operating environment during synthesis. 
+                    These constraints enable efficient logic optimization, buffer insertion, gate sizing, and timing-driven synthesis while 
+                    maintaining design quality and performance targets.
+                </p>
+
+                <h3>Applications</h3>
+                <p>
+                    ASIC synthesis flows, timing-driven logic optimization, <strong>mv_macro_engine</strong> cryptographic accelerators, 
+                    high-performance digital systems, and multi-voltage SoC development.
+                </p>
+
+                <h3>Skills Demonstrated</h3>
+                <ul class="features-list">
+                    <li>SDC Development</li>
+                    <li>Timing Constraint Creation</li>
+                    <li>Logic Synthesis</li>
+                    <li>Static Timing Analysis Fundamentals</li>
+                    <li>Clock Definition</li>
+                    <li>I/O Timing Budgeting</li>
+                    <li>Design Rule Constraints</li>
+                    <li>Timing Closure Methodology</li>
+                    <li>ASIC Front-End Design Flow</li>
+                </ul>
+
+                <h3>Key Achievement</h3>
+                <p>
+                    Created a comprehensive synthesis constraint environment that enables timing-driven optimization and supports successful 
+                    gate-level implementation of the <strong>mv_macro_engine</strong>.
+                </p>
+
+                <a href="https://github.com/Ajay-Mallesh/mv_macro_engine_project_files/blob/main/sdc/mv_constraints.sdc" target="_blank" class="btn">
+                    View Synthesis SDC on GitHub
+                </a>
+            </section>
+
+            <section class="section">
+                <h2>MCMM - Physical Design Timing Constraints</h2>
+                
+                <h3>Multi-Corner Multi-Mode Timing Setup</h3>
+                <p>
+                    Developed a complete <strong>Multi-Corner Multi-Mode (MCMM)</strong> timing constraint environment for the physical design 
+                    implementation of the <strong>mv_macro_engine</strong>. Created corner-specific, mode-specific, and scenario-specific 
+                    TCL constraint files to support timing analysis, optimization, and signoff across multiple operating conditions.
+                </p>
+
+                <h3>MCMM Configuration</h3>
+                <p>
+                    The MCMM setup includes <strong>Fast-Fast (-40°C)</strong> and <strong>Slow-Slow (125°C)</strong> process corners, 
+                    covering both <strong>Functional</strong> and <strong>Scan/Test</strong> operating modes. A centralized MCMM setup script 
+                    was used to define analysis views and manage scenario configurations for place-and-route and timing closure.
+                </p>
+
+                <h3>MCMM Key Features</h3>
+                <ul class="features-list">
+                    <li>Created corner-specific timing constraints for FF (-40°C) and SS (125°C) conditions</li>
+                    <li>Developed separate Functional and Scan mode constraint files</li>
+                    <li>Defined setup analysis scenarios across multiple PVT conditions</li>
+                    <li>Configured MCMM views for timing optimization and signoff</li>
+                    <li>Enabled robust setup timing analysis across worst-case and best-case conditions</li>
+                    <li>Supported physical design stages including placement, CTS, routing, and STA</li>
+                    <li>Improved timing closure coverage by validating design across multiple operating scenarios</li>
+                </ul>
+
+                <h3>MCMM Files Developed</h3>
+                <p><strong>Corner Constraints:</strong></p>
+                <ul class="features-list">
+                    <li>mv_c_ff_m40c.tcl</li>
+                    <li>mv_c_ss_125c.tcl</li>
+                </ul>
+
+                <p><strong>Mode Constraints:</strong></p>
+                <ul class="features-list">
+                    <li>mv_m_func.tcl</li>
+                    <li>mv_m_test.tcl</li>
+                </ul>
+
+                <p><strong>Scenario Constraints:</strong></p>
+                <ul class="features-list">
+                    <li>mv_s_func.ff_m40c.tcl</li>
+                    <li>mv_s_func.ss_125c.tcl</li>
+                    <li>mv_s_test.ff_m40c.tcl</li>
+                    <li>mv_s_test.ss_125c.tcl</li>
+                </ul>
+
+                <p><strong>MCMM Setup:</strong></p>
+                <ul class="features-list">
+                    <li>mcmm_mv_macro_engine_setup.tcl</li>
+                </ul>
+
+                <h3>MCMM Skills Demonstrated</h3>
+                <ul class="features-list">
+                    <li>MCMM Setup</li>
+                    <li>Physical Design Constraints</li>
+                    <li>Static Timing Analysis (STA)</li>
+                    <li>Timing Closure</li>
+                    <li>PVT Corner Analysis</li>
+                    <li>Functional & Scan Timing</li>
+                    <li>Innovus/ICC2 Constraint Management</li>
+                    <li>Signoff Methodology</li>
+                    <li>ASIC Physical Design Flow</li>
+                </ul>
+
+                <h3>Key Achievement</h3>
+                <p>
+                    Built a complete MCMM timing environment enabling accurate timing analysis and optimization across multiple process, 
+                    voltage, temperature, and operating-mode scenarios, supporting successful physical design implementation and signoff readiness.
+                </p>
+
+                <a href="https://github.com/Ajay-Mallesh/mv_macro_engine_project_files/tree/main/sdc/MCMM_Files/ICC2_PD_fixed" target="_blank" class="btn">
+                    View MCMM Constraints on GitHub
+                </a>
+            </section>
+        </div>
+
+        <!-- SCRIPTS PAGES -->
+        <!-- Synthesis Page -->
+        <div id="synthesis" class="page">
+            <section class="section">
+                <h2>Synthesis Script - Multi-Voltage Design</h2>
+                <p>
+                    Developed a <strong>complete Synopsys Design Compiler (dc_shell) synthesis flow</strong> for a 
+                    <strong>2-domain multi-voltage cryptographic accelerator (0.95V / 0.75V)</strong>. The script integrates RTL compilation, 
+                    UPF-based power intent, multi-voltage handling, DFT insertion, and final netlist export in a single automated flow.
+                </p>
+
+                <h3>Flow Architecture</h3>
+                <p>
+                    The flow is structured to ensure correct execution order for 
+                    <strong>multi-voltage synthesis → level-shifter insertion → scan insertion → final signoff data generation</strong>, 
+                    making it suitable for silicon-ready ASIC implementation.
+                </p>
+
+                <h3>Key Flow Features</h3>
+                <ul class="features-list">
+                    <li>Configured multi-voltage libraries including core, ultra-low-voltage, and level-shifter cells</li>
+                    <li>Integrated UPF power intent to define 0.95V and 0.75V domains</li>
+                    <li>Applied synthesis constraints (SDC) for timing-driven optimization</li>
+                    <li>Enabled multi-voltage checks and fixes (MV DRC, level shifters, tie cells)</li>
+                    <li>Automated compile → MV fix → incremental optimization flow</li>
+                    <li>Inserted DFT scan chains with scan enable, scan-in, scan-out, scan clock/reset handling</li>
+                    <li>Controlled scan architecture (single-chain configuration for simplicity)</li>
+                    <li>Ensured proper naming, consistency, and synchronization across outputs</li>
+                </ul>
+
+                <h3>Flow Stages</h3>
+                <h4>1. Setup & Library Configuration</h4>
+                <p>Defines technology libraries including standard cell libraries (0.95V / 125°C), low-voltage libraries (0.75V), 
+                and level shifter libraries for voltage crossing.</p>
+
+                <h4>2. RTL & Power Intent Integration</h4>
+                <ul class="features-list">
+                    <li>RTL elaboration of crypto_top</li>
+                    <li>UPF loaded for multi-voltage domain definition</li>
+                    <li>Voltage assignments applied to power nets (0.95V / 0.75V / GND)</li>
+                </ul>
+
+                <h4>3. Timing Constraints</h4>
+                <ul class="features-list">
+                    <li>SDC file read for synthesis timing requirements</li>
+                    <li>Operating conditions set for worst-case analysis</li>
+                    <li>Multi-voltage design check enabled</li>
+                </ul>
+
+                <h4>4. Multi-Voltage Optimization</h4>
+                <ul class="features-list">
+                    <li>Fixes for tie cells and ideal net handling</li>
+                    <li>Automatic level-shifter insertion enabled</li>
+                    <li>Multi-voltage design rule fixes applied before compilation</li>
+                </ul>
+
+                <h4>5. Logic Synthesis</h4>
+                <ul class="features-list">
+                    <li>compile_ultra -scan for optimized and scan-ready netlist</li>
+                    <li>Retiming and clock gating enabled</li>
+                    <li>Incremental compile after MV cell insertion</li>
+                </ul>
+
+                <h4>6. DFT Insertion</h4>
+                <ul class="features-list">
+                    <li>Scan ports created (scan enable, scan-in, scan-out)</li>
+                    <li>Scan architecture defined and validated</li>
+                    <li>DFT protocol generated and inserted into netlist</li>
+                    <li>Single scan chain configured for simplicity</li>
+                </ul>
+
+                <h4>7. Output Generation</h4>
+                <p>Exports silicon-ready deliverables:</p>
+                <ul class="features-list">
+                    <li>Gate-level Verilog netlist</li>
+                    <li>Synthesized SDC</li>
+                    <li>UPF (updated with naming consistency fixes)</li>
+                    <li>ScanDEF for backend physical design tools</li>
+                </ul>
+
+                <h3>Skills Demonstrated</h3>
+                <ul class="features-list">
+                    <li>Synopsys Design Compiler</li>
+                    <li>Multi-Voltage Synthesis</li>
+                    <li>UPF Integration</li>
+                    <li>DFT Insertion</li>
+                    <li>Scan Chain Design</li>
+                    <li>Level Shifter Handling</li>
+                    <li>Timing-Driven Synthesis</li>
+                    <li>ASIC Flow Automation</li>
+                    <li>Physical Design Readiness</li>
+                </ul>
+
+                <h3>Key Achievement</h3>
+                <p>
+                    Built a <strong>fully automated multi-voltage synthesis and DFT flow</strong> that integrates power intent, 
+                    timing constraints, and scan insertion, producing a <strong>silicon-ready netlist for a 2-domain cryptographic accelerator</strong> 
+                    with correct voltage handling and testability support.
+                </p>
+
+                <a href="https://github.com/Ajay-Mallesh/mv_macro_engine_project_files/blob/main/scripts/synthesis/fixed_fanout_issue_synthesis/synthesis_sfo.tcl" target="_blank" class="btn">
+                    View Synthesis Script on GitHub
+                </a>
+            </section>
+        </div>
+
+        <!-- Floorplan Page -->
+        <div id="floorplan" class="page">
+            <section class="section">
+                <h2>Floorplan-to-Powerplan Flow</h2>
+                <p>
+                    Developed a <strong>full physical design initialization flow</strong> for a multi-voltage cryptographic SoC, 
+                    covering library setup, floorplanning, pin placement, power intent integration, and early physical readiness for placement and routing.
+                </p>
+
+                <h3>Design Methodology</h3>
+                <p>
+                    The flow is built using <strong>Synopsys ICC2-style block implementation methodology</strong>, 
+                    ensuring proper coordination between RTL netlist, UPF power intent, and physical constraints.
+                </p>
+
+                <h3>Key Features</h3>
+                <ul class="features-list">
+                    <li>Created a design library environment (NDM) using multiple technology variants (HVT/LVT/RVT/SRAM/tech files)</li>
+                    <li>Imported and linked synthesized gate-level netlist</li>
+                    <li>Initialized core-aware floorplan with 70% utilization for routing flexibility</li>
+                    <li>Performed structured I/O pin placement with layer and spacing constraints</li>
+                    <li>Integrated multi-voltage UPF into physical design and committed power intent</li>
+                    <li>Defined voltage-aware design regions (voltage areas) for domain separation</li>
+                    <li>Enabled multi-voltage design rule checking (MV DRC)</li>
+                    <li>Prepared design for macro integration, power planning, and routing closure</li>
+                </ul>
+
+                <h3>Flow Breakdown</h3>
+                <h4>1. Design Setup & Library Initialization</h4>
+                <ul class="features-list">
+                    <li>Created design library (CRYPTO_TOP_SCANCHAIN.nlib)</li>
+                    <li>Loaded technology and standard cell libraries (HVT/LVT/RVT/SRAM)</li>
+                    <li>Read and linked synthesized gate-level netlist</li>
+                </ul>
+
+                <h4>2. Floorplan Generation</h4>
+                <ul class="features-list">
+                    <li>Core utilization set to 70% for congestion-safe routing</li>
+                    <li>Aspect ratio fixed for balanced placement</li>
+                    <li>Defined site rows and core offsets for structured placement</li>
+                    <li>Saved initial floorplan checkpoint</li>
+                </ul>
+
+                <!-- Floorplan Script Link -->
+                <a href="https://github.com/Ajay-Mallesh/mv_macro_engine_project_files/blob/main/scripts/Floorplan/floorplan_script.tcl" target="_blank" class="btn">
+                    View Floorplan Script on GitHub
+                </a>
+                
+                <p> 
+                    <!-- Empty paragraph for spacing -->
+                </p>
+
+                <h4>3. Pin Placement Strategy</h4>
+                <ul class="features-list">
+                    <li>Input/output pins placed on Metal Layer M5</li>
+                    <li>Clock pins with higher spacing and protection</li>
+                    <li>Data inputs with standard spacing</li>
+                    <li>Outputs with isolated placement rules</li>
+                </ul>
+
+                <!-- Port Placement Script Link -->
+                <a href="https://github.com/Ajay-Mallesh/mv_macro_engine_project_files/blob/main/scripts/macros_and_ports_placement_script/ports_placement_individual_script.tcl" target="_blank" class="btn">
+                    View Port Placement Script on GitHub
+                </a>
+
+                <p> 
+                    <!-- Empty paragraph for spacing -->
+                </p>
+
+                <h4>4. Multi-Voltage Integration</h4>
+                <ul class="features-list">
+                    <li>Loaded and committed UPF power intent</li>
+                    <li>Created voltage-aware physical regions</li>
+                    <li>Verified multi-voltage correctness using check_mv_design</li>
+                    <li>Ensured correct separation of 0.75V and 0.95V domains at layout level</li>
+                </ul>
+
+                <!-- Multi-Voltage Integration Script Link -->
+                <a href="https://github.com/Ajay-Mallesh/mv_macro_engine_project_files/blob/main/scripts/voltage_area_efficent/v_a_efficient_mv_macro_engine.tcl" target="_blank" class="btn">
+                    View Voltage area creation Script on GitHub
+                </a>
+
+                <p> 
+                    <!-- Empty paragraph for spacing -->
+                </p>
+
+                <h4>5. Macro Placement & Scan Chain Preparation</h4>
+                <p> 
+                    <!-- Empty paragraph for spacing -->
+                </p>
+                <p>
+                    Strategic placement of the 100 hard macros (including 16 <code>lp_ram_subsystem</code> SRAMs) is critical for timing closure and routability.
+                    The project follows a flexible macro-centric placement strategy designed to optimize congestion and wire detours.
+                </p>
+
+                <h5>Macro Placement Guidelines:</h5>
+                <ul class="features-list">
+                    <li><strong>Flexibility:</strong> Users have <strong>no restrictions</strong> on using their own custom macro placement strategies. You are encouraged to explore alternative placements to optimize the floorplan for specific performance goals.</li>
+                    <li><strong>Orientation & Alignment:</strong> Macros are aligned to the technology-compliant site grid to prevent legalization errors.</li>
+                    <li><strong>Congestion Management:</strong> Macros are spaced to allow sufficient routing channels for both the 0.95V and 0.75V power meshes.</li>
+                    <li><strong>Domain Isolation:</strong> Hard macros are positioned to maintain logical separation between the high-performance and low-power domains, minimizing unnecessary level-shifter congestion.</li>
+                    <li><strong>Scan Chain Configuration:</strong> Configured to ensure testability by balancing scan register distribution across the physical layout.</li>
+                </ul>
+
+                <a href="https://github.com/Ajay-Mallesh/mv_macro_engine_project_files/blob/main/scripts/macros_and_ports_placement_script/macro_placement_script.tcl" target="_blank" class="btn">
+                    View Macro Placement Script on GitHub
+                </a>
+                
+                <p> 
+                    <!-- Empty paragraph for spacing -->
+                </p>
+
+                <h4>6. Power Grid Preparation</h4>
+                <ul class="features-list">
+                    <li>Executed power planning script (powerplan.tcl)</li>
+                    <li>Established robust power delivery network (PDN) for multi-voltage domains</li>
+                </ul>
+
+                <h3>Skills Demonstrated</h3>
+                <ul class="features-list">
+                    <li>Physical Design (ICC2)</li>
+                    <li>Floorplanning</li>
+                    <li>Pin Planning</li>
+                    <li>Multi-Voltage Integration</li>
+                    <li>UPF Commit Flow</li>
+                    <li>Power Grid Design</li>
+                    <li>Library Management (NDM)</li>
+                    <li>ASIC Backend Flow</li>
+                    <li>Early Stage Design Closure</li>
+                </ul>
+
+                <a href="https://github.com/Ajay-Mallesh/mv_macro_engine_project_files/blob/main/scripts/Powerplan/powerplan_mv_macro_engine.tcl" target="_blank" class="btn">
+                    View Power Plan Script on GitHub
+                </a>
+
+                <h3>Key Achievement</h3>
+                <p>
+                    Built a <strong>complete physical design initialization flow</strong> that integrates <strong>multi-voltage power intent, 
+                    structured floorplanning, pin strategy, and DFT readiness</strong>, forming a solid foundation for placement, routing, 
+                    and timing closure of a silicon-ready mv macro engine SoC.
+                </p>
+
+                <a href="https://github.com/Ajay-Mallesh/mv_macro_engine_project_files/blob/main/scripts/Floorplan_to_Powerplan/pd_flow_mv_macro_engine.tcl" target="_blank" class="btn">
+                    View Floorplan to Power Plan Script on GitHub
+                </a>
+            </section>
+        </div>
+
+        <!-- Placement Page -->
+        <div id="placement" class="page">
+            <section class="section">
+                <h2>Placement Preparation & Optimization</h2>
+                <p>
+                    Developed a <strong>pre-placement and placement-optimization setup script</strong> for a multi-voltage mv macro engine SoC 
+                    using an ICC2-style physical design flow. This stage prepares the design for legalization, congestion control, and 
+                    timing-aware placement while ensuring proper handling of macros, scan chains, and MCMM constraints.
+                </p>
+
+                <h3>Design Focus</h3>
+                <p>
+                    The flow focuses on <strong>clean design state restoration, placement rule configuration, congestion control, 
+                    and routing layer control</strong> before running full placement optimization.
+                </p>
+
+                <h3>Key Features</h3>
+                <ul class="features-list">
+                    <li>Restores and initializes clean placement stage from verified design snapshot</li>
+                    <li>Applies MCMM timing constraints setup for multi-corner, multi-mode analysis</li>
+                    <li>Handles macro and fixed cell placement constraints</li>
+                    <li>Enables advanced legalization and placement repair algorithms</li>
+                    <li>Controls cell density and fanout limits for congestion prevention</li>
+                    <li>Configures routing layer restrictions for early design stability</li>
+                    <li>Prepares scan chain and DEF-based physical integration</li>
+                    <li>Ensures placement-ready environment for optimization flow</li>
+                </ul>
+
+                <h3>Flow Breakdown</h3>
+                <h4>1. Design Restoration & Initialization</h4>
+                <ul class="features-list">
+                    <li>Restores design state from initial_placement</li>
+                    <li>Opens clean block for placement stage processing</li>
+                    <li>Runs pre-placement design checks</li>
+                </ul>
+
+                <h4>2. Placement Optimization Controls</h4>
+                <ul class="features-list">
+                    <li>Enables advanced legalization engine</li>
+                    <li>Activates search-and-repair placement optimization</li>
+                    <li>Limits placement density to 0.75 for congestion control</li>
+                    <li>Restricts maximum fanout to 25 for signal integrity</li>
+                </ul>
+
+                <h4>3. Routing & Layer Management</h4>
+                <ul class="features-list">
+                    <li>Defines ignored routing layers (M2–M6 restriction setup)</li>
+                    <li>Configures net routing rules</li>
+                    <li>Hard layer enforcement for critical nets</li>
+                    <li>Flexible pin connection handling for optimization</li>
+                </ul>
+
+                <h3>Skills Demonstrated</h3>
+                <ul class="features-list">
+                    <li>Physical Design (ICC2/Innovus)</li>
+                    <li>Placement Optimization</li>
+                    <li>MCMM Integration</li>
+                    <li>Congestion Management</li>
+                    <li>Macro Handling</li>
+                    <li>Scan Integration</li>
+                    <li>Design Rule Awareness</li>
+                    <li>Routing Constraint Setup</li>
+                    <li>ASIC Backend Flow Preparation</li>
+                </ul>
+
+                <h3>Key Achievement</h3>
+                <p>
+                    Established a <strong>robust placement-ready environment for a multi-voltage mv macro engine SoC</strong>, integrating MCMM timing 
+                    constraints, scan chain structure, congestion control, and routing awareness to ensure smooth transition into full 
+                    placement and optimization stages.
+                </p>
+
+                <a href="https://github.com/Ajay-Mallesh/mv_macro_engine_project_files/blob/main/scripts/Placement_script/placement_mv_macro_engine.tcl" target="_blank" class="btn">
+                    View Placement Script on GitHub
+                </a>
+            </section>
+        </div>
+
+        <!-- CTS Page -->
+        <div id="cts" class="page">
+            <section class="section">
+                <h2>Clock Tree Synthesis (CTS)</h2>
+                <p>
+                    Developed a <strong>complete Clock Tree Synthesis (CTS) execution script</strong> for the <strong>mv_macro_engine</strong> SoC, 
+                    implementing a high-precision <strong>H-Tree clock topology</strong>. The flow focuses on balanced distribution, 
+                    skew control, and timing closure across multiple PVT corners. The implementation integrates <strong>clock constraints, 
+                    NDR rules, clock uncertainty management, and multi-voltage level shifting</strong> to ensure robust clock propagation 
+                    across the 0.95V and 0.75V domains.
+                </p>
+
+                <h3>Key Features: H-Tree & CTS Strategy</h3>
+                <ul class="features-list">
+                    <li><strong>H-Tree Topology:</strong> Implemented a symmetrical H-Tree structure to guarantee uniform insertion delay and minimal skew across the high-performance cryptographic datapath.</li>
+                    <li><strong>Standard-Cell-Only Tree:</strong> Focused CTS flow on the standard-cell clock network, with balanced distribution to macro clock pins.</li>
+                    <li><strong>Clock-Specific Routing (NDR):</strong> Defined custom Non-Default Rules (NDR) using double-width and double-spacing to minimize cross-talk.</li>
+                    <li><strong>Multi-Voltage Level Shifting:</strong> Integrated clock-domain level shifters specifically for the transition into the 0.75V domain, ensuring timing-accurate clock edges.</li>
+                    <li><strong>CRPR & Uncertainty:</strong> Enabled Clock Reconvergence Pessimism Removal (CRPR) and modeled multi-corner setup/hold uncertainty for robust signoff.</li>
+                    <li><strong>DFT-Aware:</strong> Configured scan-clock structures to ensure seamless integration between functional and test modes.</li>
+                </ul>
+
+                <h3>Flow Breakdown</h3>
+                <h4>1. Clock Routing Rules (NDR)</h4>
+                <ul class="features-list">
+                    <li>Removes default routing constraints for clock nets.</li>
+                    <li>Defines double-width & double-spacing rules (NDR) to mitigate signal integrity risks.</li>
+                    <li><strong>Layer Constraint:</strong> Restricts clock trunk routing to M5/M6 layers to preserve M7/M8 for the power delivery mesh.</li>
+                </ul>
+
+                <h4>2. H-Tree & Constraint Definition</h4>
+                <ul class="features-list">
+                    <li><strong>H-Tree Topology:</strong> Forces perfectly symmetrical wire lengths to all quadrants, critical for the high-frequency <strong>mv_macro_engine</strong> datapaths.</li>
+                    <li><strong>Skew Targets:</strong> Strict skew targets per corner: SS corners (relaxed) and FF corners (tight: 0.02ns).</li>
+                    <li><strong>Transition Limits:</strong> Set at 0.15 ns to maintain edge sharpness.</li>
+                </ul>
+
+                <h4>3. CTS Execution Flow</h4>
+                <ul class="features-list">
+                    <li><strong>Build Clock Tree:</strong> Generates the balanced H-Tree structure based on physical macro/port coordinates.</li>
+                    <li><strong>Clock Routing:</strong> Physically routes the H-Tree backbone and leaf-level nets.</li>
+                    <li><strong>Multi-Voltage Level Shifter Insertion:</strong> Automatic insertion of level shifters at domain crossings within the clock network.</li>
+                </ul>
+
+                <h4>4. Final Optimization Stage</h4>
+                <ul class="features-list">
+                    <li>Performs high-effort hold fixing using High-VT (HVT) delay cells to minimize leakage.</li>
+                    <li>Final skew cleanup and DFT-aware scan clock optimization.</li>
+                    <li>Produces a signoff-ready clock network compliant with PrimeTime analysis.</li>
+                </ul>
+
+                <h3>Skills Demonstrated</h3>
+                <ul class="features-list">
+                    <li>H-Tree Clock Topology Design</li>
+                    <li>Clock Tree Synthesis (CTS)</li>
+                    <li>Multi-Voltage Clock Domain Crossing</li>
+                    <li>NDR Routing Strategy</li>
+                    <li>Skew & Uncertainty Modeling</li>
+                    <li>CRPR (Clock Reconvergence Pessimism Removal)</li>
+                    <li>ASIC Physical Design (ICC2)</li>
+                    <li>Timing Closure Architecture</li>
+                </ul>
+
+                <h3>Key Achievement</h3>
+                <p>
+                    Designed a <strong>robust H-Tree-based CTS flow</strong> for the <strong>mv_macro_engine</strong>, 
+                    featuring <strong>corner-aware skew control and integrated level shifting</strong>, ensuring a 
+                    low-skew, timing-clean clock network optimized for silicon-ready signoff.
+                </p>
+
+                <a href="https://github.com/Ajay-Mallesh/mv_macro_engine_project_files/tree/main/scripts/CTS_H_TREE" target="_blank" class="btn">
+                    View CTS Scripts on GitHub
+                </a>
+            </section>
+        </div>
+
+        <!-- Routing Page -->
+        <div id="routing" class="page">
+            <section class="section">
+                <h2>Routing & Signoff Optimization</h2>
+                <p>
+                    Developed a <strong>full-chip production routing script</strong> for a <strong>multi-voltage mv macro engine SoC</strong>, 
+                    focusing on timing closure, congestion-aware routing, and signal integrity optimization. The flow is designed for 
+                    <strong>signoff-quality routing</strong>, ensuring correct electrical behavior across all PVT corners and voltage domains.
+                </p>
+
+                <h3>Key Features</h3>
+                <ul class="features-list">
+                    <li>Enabled timing-driven routing across global, track, and detail stages</li>
+                    <li>Integrated crosstalk-aware routing for signal integrity (SI) reduction</li>
+                    <li>Applied statistical SI analysis for accurate noise modeling</li>
+                    <li>Ensured clock network protection during routing</li>
+                    <li>Included antenna rule integration for fabrication compliance</li>
+                    <li>Performed routability checks before routing execution</li>
+                    <li>Executed full route_auto → route_opt → signoff optimization flow</li>
+                    <li>Maintained consistent instance naming for debug and traceability</li>
+                </ul>
+
+                <h3>Flow Breakdown</h3>
+                <h4>1. Pre-Routing Verification</h4>
+                <ul class="features-list">
+                    <li>Runs pre-route design checks to ensure clean netlist state</li>
+                    <li>Generates routability report to detect congestion risks early</li>
+                </ul>
+
+                <h4>2. Timing-Driven Routing Strategy</h4>
+                <ul class="features-list">
+                    <li>Enables timing optimization at all routing stages (Global, Track, Detail)</li>
+                    <li>Ensures critical paths are prioritized during physical wire placement</li>
+                </ul>
+
+                <h4>3. Signal Integrity (SI) Optimization</h4>
+                <ul class="features-list">
+                    <li>Enables crosstalk-aware routing engine</li>
+                    <li>Uses statistical aggregation model for SI accuracy</li>
+                    <li>Improves noise robustness in high-speed nets</li>
+                </ul>
+
+                <h4>4. Routing Execution Flow</h4>
+                <ul class="features-list">
+                    <li>Global routing</li>
+                    <li>Track assignment</li>
+                    <li>Detailed routing</li>
+                    <li>Saves checkpoints at each stage for debug and recovery</li>
+                </ul>
+
+                <h4>5. Final Optimization</h4>
+                <ul class="features-list">
+                    <li>Runs post-route optimization (route_opt)</li>
+                    <li>Fixes timing violations and improves wire quality</li>
+                    <li>Produces signoff-ready routed design</li>
+                </ul>
+
+                <h3>Skills Demonstrated</h3>
+                <ul class="features-list">
+                    <li>Physical Design Routing</li>
+                    <li>Timing-Driven Routing</li>
+                    <li>Crosstalk Analysis (SI)</li>
+                    <li>Antenna Rule Compliance</li>
+                    <li>Congestion Management</li>
+                    <li>ICC2/Innovus Routing Flow</li>
+                    <li>Clock Network Protection</li>
+                    <li>ASIC Signoff Methodology</li>
+                </ul>
+
+                <h3>Key Achievement</h3>
+                <p>
+                    Implemented a <strong>signoff-grade routing flow</strong> for a multi-voltage macro engine SoC, integrating 
+                    <strong>timing, SI, and manufacturability constraints</strong> to achieve a <strong>robust, fabrication-ready 
+                    routed design with improved performance and reliability</strong>.
+                </p>
+
+                <a href="https://github.com/Ajay-Mallesh/mv_macro_engine_project_files/blob/main/scripts/Routing/routing_script.tcl" target="_blank" class="btn">
+                    View Routing Script on GitHub
+                </a>
+            </section>
+        </div>
+
+        <!-- Signoff Page -->
+        <div id="signoff" class="page">
+            <section class="section">
+                <h2>Signoff Extraction & PrimeTime Handoff</h2>
+                <p>
+                    Developed a <strong>signoff-stage timing closure and extraction flow</strong> for a multi-voltage macro engine SoC, 
+                    focusing on <strong>accurate parasitic extraction (StarRC) integration and PrimeTime STA handoff setup</strong>. 
+                    This stage ensures that post-route parasitics, power intent, and timing constraints are correctly prepared for final 
+                    timing signoff analysis.
+                </p>
+
+                <h3>Flow Purpose</h3>
+                <p>
+                    The flow bridges <strong>physical design signoff data → extraction (SPEF/NXTGRD) → static timing analysis (PrimeTime)</strong>, 
+                    enabling accurate silicon-level timing verification.
+                </p>
+
+                <h3>Key Features</h3>
+                <ul class="features-list">
+                    <li>Integrated signoff parasitic extraction flow using StarRC</li>
+                    <li>Managed corner-based parasitic models (Cbest / Cworst scenarios)</li>
+                    <li>Generated accurate SPEF for post-route timing analysis</li>
+                    <li>Prepared PrimeTime-ready netlist and constraint setup</li>
+                    <li>Configured multi-corner SDC generation (FF / SS scenarios)</li>
+                    <li>Handled UPF integration for multi-voltage consistency</li>
+                    <li>Enabled coupling-aware parasitic analysis for SI accuracy</li>
+                    <li>Established clean handoff from physical design to STA signoff tools</li>
+                </ul>
+
+                <h3>Flow Breakdown</h3>
+                <h4>1. Parasitic Extraction (StarRC Stage)</h4>
+                <p><strong>Inputs used:</strong></p>
+                <ul class="features-list">
+                    <li>Routed DEF</li>
+                    <li>NDM database</li>
+                    <li>Technology MAP files</li>
+                    <li>NXTGRD corner models</li>
+                </ul>
+
+                <p><strong>Generated parasitic outputs:</strong></p>
+                <ul class="features-list">
+                    <li>Cbest SPEF (fast corner)</li>
+                    <li>Cworst SPEF (slow corner)</li>
+                </ul>
+
+                <h4>2. SPEF Integration for STA</h4>
+                <ul class="features-list">
+                    <li>Extracted SPEF files copied into PrimeTime input environment</li>
+                    <li>Ensures consistency between physical and timing domains</li>
+                    <li>Enables multi-corner STA setup</li>
+                </ul>
+
+                <h4>3. Netlist & Constraint Preparation</h4>
+                <ul class="features-list">
+                    <li>Generated optimized post-route netlist (routed_netlist.v)</li>
+                    <li>Exported scenario-based SDCs (ff_125c.sdc, ss_125c.sdc)</li>
+                    <li>Ensures MCMM-aware timing analysis in PrimeTime</li>
+                </ul>
+
+                <h3>Skills Demonstrated</h3>
+                <ul class="features-list">
+                    <li>Static Timing Analysis (PrimeTime)</li>
+                    <li>Parasitic Extraction (StarRC)</li>
+                    <li>SPEF Generation</li>
+                    <li>MCMM Signoff Flow</li>
+                    <li>Multi-Voltage STA</li>
+                    <li>Power Intent Integration (UPF)</li>
+                    <li>Crosstalk-Aware Timing</li>
+                    <li>ASIC Signoff Methodology</li>
+                </ul>
+
+                <h3>Key Achievement</h3>
+                <p>
+                    Built a <strong>complete signoff extraction-to-STA handoff flow</strong>, enabling <strong>accurate post-route 
+                    timing analysis using real parasitics (SPEF/NXTGRD) and multi-corner constraints</strong>, ensuring 
+                    <strong>silicon-accurate verification of a multi-voltage macro engine SoC</strong>.
+                </p>
+
+                <a href="https://github.com/Ajay-Mallesh/mv_macro_engine_project_files/tree/main/scripts/signoff_script" target="_blank" class="btn">
+                    View Signoff Script on GitHub
+                </a>
+            </section>
+        </div>
+
+        <!-- DRV Fixes Page -->
+        <div id="drv-fixes" class="page">
+            <section class="section">
+                <h2>DRV Fixes - Max Transition & Capacitance ECO</h2>
+                
+                <h3>1. Automated Cell Upsizing Script</h3>
+                <p>
+                    Developed an <strong>ECO (Engineering Change Order) automation script</strong> to fix <strong>max transition 
+                    and capacitance violations</strong> in a multi-voltage ASIC design. The script analyzes timing violation reports, 
+                    identifies critical nets, and automatically upsizes driving cells to improve signal strength and meet timing constraints.
+                </p>
+
+                <h3>Upsizing Features</h3>
+                <ul class="features-list">
+                    <li>Parses max transition violation reports automatically</li>
+                    <li>Extracts critical net names causing timing violations</li>
+                    <li>Identifies driver cells from output pins of affected nets</li>
+                    <li>Dynamically selects next higher drive strength from standard cell library</li>
+                    <li>Performs automatic cell resizing (upsizing)</li>
+                    <li>Applies incremental placement legalization after ECO changes</li>
+                    <li>Updates timing analysis after each modification</li>
+                    <li>Handles errors gracefully using TCL catch mechanism</li>
+                    <li>Tracks success/failure of each ECO operation</li>
+                </ul>
+
+                <h3>Upsizing Flow Breakdown</h3>
+                <h4>1. Violation-Driven Net Extraction</h4>
+                <ul class="features-list">
+                    <li>Reads timing report file (max_trans_vio.txt)</li>
+                    <li>Filters valid net entries from report</li>
+                    <li>Ignores headers and metadata lines</li>
+                </ul>
+
+                <h4>2. Drive Strength Optimization</h4>
+                <ul class="features-list">
+                    <li>Parses library naming convention (e.g., AND2X1_HVT)</li>
+                    <li>Extracts current drive strength</li>
+                    <li>Computes next higher strength version</li>
+                    <li>Constructs target library cell name</li>
+                </ul>
+
+                <h4>3. Cell Upsizing (ECO Fix)</h4>
+                <ul class="features-list">
+                    <li>Replaces driver cell with higher strength version</li>
+                    <li>Improves transition time and load driving capability</li>
+                    <li>Improves timing slack</li>
+                </ul>
+
+                <a href="https://github.com/Ajay-Mallesh/crypro_top_Project_Files/blob/main/Cryto_top_Project/scripts/working_scripts/upsize_driver_cell/upsize_cell.tcl" target="_blank" class="btn">
+                    View Cell Upsizing Script on GitHub
+                </a>
+            </section>
+
+            <section class="section">
+                <h2>2. Automated Buffer Insertion Script</h2>
+                <p>
+                    Developed an <strong>ECO automation script for fixing max capacitance violations</strong> in a multi-voltage ASIC 
+                    design by inserting buffers on critical nets. The flow parses violation reports, identifies problematic nets, and 
+                    strategically inserts buffering cells close to driver pins to reduce load and improve signal integrity.
+                </p>
+
+                <h3>Buffer Insertion Features</h3>
+                <ul class="features-list">
+                    <li>Parses max capacitance violation report automatically</li>
+                    <li>Extracts critical violating net names</li>
+                    <li>Identifies driver output pins for each net</li>
+                    <li>Inserts high-drive buffer cells (NBUFFX8_LVT)</li>
+                    <li>Positions buffers near driver pin location for optimal timing impact</li>
+                    <li>Performs incremental placement legalization after insertion</li>
+                    <li>Handles failures using robust TCL error catching</li>
+                    <li>Provides success/failure statistics for ECO debugging</li>
+                </ul>
+
+                <h3>Buffer Insertion Flow Breakdown</h3>
+                <h4>1. Violation Report Processing</h4>
+                <ul class="features-list">
+                    <li>Reads max_cap_vio.txt</li>
+                    <li>Filters valid violation entries</li>
+                    <li>Extracts net names from report columns</li>
+                </ul>
+
+                <h4>2. Buffer Insertion Strategy</h4>
+                <ul class="features-list">
+                    <li>Inserts buffer cell (NBUFFX8_LVT)</li>
+                    <li>Uses insert_buffer command on driver pin</li>
+                    <li>Reduces capacitive load seen by original driver</li>
+                    <li>Improves signal integrity and transition delay</li>
+                </ul>
+
+                <h4>3. Incremental Legalization</h4>
+                <ul class="features-list">
+                    <li>Runs legalize_placement -incremental</li>
+                    <li>Fixes placement overlaps introduced by buffer insertion</li>
+                    <li>Maintains design legality without full re-place</li>
+                </ul>
+
+                <h3>Skills Demonstrated</h3>
+                <ul class="features-list">
+                    <li>Physical Design ECO</li>
+                    <li>Buffer Insertion Strategy</li>
+                    <li>Max Capacitance Fixing</li>
+                    <li>Signal Integrity Optimization</li>
+                    <li>TCL Automation</li>
+                    <li>Incremental Placement</li>
+                    <li>Timing Closure Techniques</li>
+                    <li>ASIC Physical Design Debugging</li>
+                </ul>
+
+                <h3>Key Achievement</h3>
+                <p>
+                    Built an <strong>automated ECO buffer insertion flow</strong> that intelligently resolves <strong>max capacitance 
+                    violations by inserting optimized buffer cells near driver pins</strong>, enabling <strong>fast, localized timing 
+                    and SI fixes in late-stage ASIC physical design</strong>.
+                </p>
+
+                <a href="https://github.com/Ajay-Mallesh/crypro_top_Project_Files/blob/main/Cryto_top_Project/scripts/working_scripts/Insert_Buffer/insert_buffer.tcl" target="_blank" class="btn">
+                    View Buffer Insertion Script on GitHub
+                </a>
+            </section>
+        </div>
+
+        <!-- Setup Fixes Page -->
+        <div id="setup-fixes" class="page">
+            <section class="section">
+                <h2>Setup Fixes - Voltage Area & Floorplan Optimization</h2>
+                <p>
+                    This section covers advanced physical design optimization techniques for multi-voltage ASIC implementation, 
+                    including automated voltage-area generation and floorplan iteration cycles.
+                </p>
+
+                <h3>Voltage Area Creation Script</h3>
+                <p>
+                    Developed a <strong>dynamic voltage-area creation script</strong> for a multi-voltage cryptographic SoC, 
+                    focusing on automatic calculation and generation of <strong>low-power domain (PD_LP) placement regions</strong> 
+                    based on cell area utilization and physical design constraints.
+                </p>
+
+                <h3>Voltage Area Features</h3>
+                <ul class="features-list">
+                    <li>Automatically calculates total area of low-power key generation block (u_key_gen_lp)</li>
+                    <li>Applies target utilization (80%) for voltage area sizing</li>
+                    <li>Dynamically computes height and width based on standard cell grid alignment</li>
+                    <li>Rounds dimensions to technology-compliant placement grid</li>
+                    <li>Generates voltage-area coordinates with guard-band isolation</li>
+                    <li>Defines physical region for PD_LP power domain</li>
+                    <li>Removes previous voltage regions before regeneration for consistency</li>
+                </ul>
+
+                <h3>Voltage Area Flow Breakdown</h3>
+                <h4>1. Area Extraction & Calculation</h4>
+                <ul class="features-list">
+                    <li>Extracts area of all cells in low-power block</li>
+                    <li>Accumulates total design area dynamically</li>
+                    <li>Computes effective voltage-area requirement using utilization factor (0.8)</li>
+                </ul>
+
+                <h4>2. Voltage Area Sizing</h4>
+                <ul class="features-list">
+                    <li>Converts logical area → physical region size</li>
+                    <li>Calculates height (grid-aligned rounding)</li>
+                    <li>Calculates width (derived from area/height ratio)</li>
+                    <li>Ensures compatibility with placement site grid</li>
+                </ul>
+
+                <h4>3. Grid-Aware Physical Adjustment</h4>
+                <ul class="features-list">
+                    <li>Rounds dimensions to height grid: 1.672</li>
+                    <li>Rounds dimensions to width grid: 0.152</li>
+                    <li>Prevents placement and legalization violations</li>
+                </ul>
+
+                <h4>4. Region Definition & Guard Bands</h4>
+                <ul class="features-list">
+                    <li>Defines origin point (llx, lly)</li>
+                    <li>Computes opposite corner (urx, ury)</li>
+                    <li>Creates bounding box for voltage area</li>
+                    <li>Applies guard band spacing (5.016 units) to isolate domain</li>
+                </ul>
+
+                <h3>Skills Demonstrated (Voltage Area)</h3>
+                <ul class="features-list">
+                    <li>Voltage-Aware Floorplanning</li>
+                    <li>Physical Design Automation</li>
+                    <li>Area Estimation</li>
+                    <li>Multi-Voltage Partitioning</li>
+                    <li>TCL Scripting for PD</li>
+                    <li>Grid-Constrained Layout Design</li>
+                    <li>Power Domain Isolation</li>
+                    <li>ASIC Physical Design Methodology</li>
+                </ul>
+
+                <h3>Key Achievement (Voltage Area)</h3>
+                <p>
+                    Built an <strong>automated voltage-area generation methodology</strong> that dynamically sizes and places a 
+                    <strong>low-power domain region based on real cell area and utilization constraints</strong>, ensuring 
+                    <strong>accurate, grid-aligned, and isolation-safe multi-voltage floorplanning for ASIC implementation</strong>.
+                </p>
+            </section>
+
+            <section class="section">
+                <h2>Floorplan Iteration & Congestion Fix</h2>
+                <p>
+                    This section shows a real physical design floorplan optimization cycle, where an initial high-utilization 
+                    "Y-shaped" floorplan caused severe routing congestion, and then was corrected by resizing and rebalancing the core area.
+                </p>
+
+                <h3>Initial Floorplan Problem</h3>
+                <p>The first floorplan used a Y-shaped boundary, which created uneven routing resources and congestion hotspots.</p>
+
+                <h3>Problem Analysis</h3>
+                <ul class="features-list">
+                    <li>Core utilization: ~84.75% (too high for routing)</li>
+                    <li>Severe routing congestion: ~70%</li>
+                    <li>Total overflow: 377,057</li>
+                    <li>High congestion GRCs: 69.13%</li>
+                    <li>Horizontal routing overflow: 81.91% (critical bottleneck)</li>
+                    <li>Vertical routing overflow: 56.36%</li>
+                </ul>
+
+                <h3>Root Cause Analysis</h3>
+                <ul class="features-list">
+                    <li>High utilization left insufficient routing whitespace</li>
+                    <li>Irregular "Y-shape" created uneven routing channels</li>
+                    <li>Horizontal congestion was especially severe</li>
+                    <li>Placement had no room for detours or detangling nets</li>
+                </ul>
+
+                <h3>Fix Strategy</h3>
+                <p>The floorplan was re-initialized with improved geometry and reduced density.</p>
+
+                <h3>Key Changes</h3>
+                <ul class="features-list">
+                    <li>Expanded and reshaped boundary for better routing flow</li>
+                    <li>Reduced core utilization from ~84.75% to ~76.71%</li>
+                    <li>Improved routing channel distribution</li>
+                    <li>Preserved Y-shape structure but made it more routing-friendly</li>
+                </ul>
+
+                <h3>Final Outcome</h3>
+                <ul class="features-list">
+                    <li>Core utilization reduced to 76.71% (safe range)</li>
+                    <li>Improved routing feasibility</li>
+                    <li>Significantly lower congestion risk</li>
+                </ul>
+
+                <h3>Engineering Insight</h3>
+                <p style="background: rgba(233, 69, 96, 0.15); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--highlight-color);">
+                    <strong>High utilization + irregular floorplan shapes = routing congestion explosion</strong><br><br>
+                    Even if placement fits, routing will fail without proper whitespace planning.
+                </p>
+
+                <h3>Skills Demonstrated</h3>
+                <ul class="features-list">
+                    <li>Floorplanning Optimization</li>
+                    <li>Congestion Analysis</li>
+                    <li>Utilization Tuning</li>
+                    <li>Routing Channel Design</li>
+                    <li>Physical Design Debugging</li>
+                    <li>ICC2/Innovus Flow</li>
+                    <li>Iterative Floorplan Refinement</li>
+                </ul>
+
+                <h3>Key Achievement</h3>
+                <p>
+                    Identified and fixed a <strong>severe floorplan-induced routing congestion issue</strong> by iteratively refining 
+                    a <strong>Y-shaped floorplan</strong>, reducing utilization and improving routing resources, resulting in a 
+                    <strong>clean, routable, and physically balanced chip layout</strong>.
+                </p>
+            </section>
+        </div>
+
+        <!-- Signoff PAGES -->
+        <!-- STARRC -->
+        <div id="STARRC" class="page">
+            <section class="section">
+                <h2>Timing Closure & Signoff Extraction</h2>
+                <p>
+                    This module outlines the final physical design signoff process, focusing on routing cleanup, 
+                    parasitic extraction, and timing verification using PrimeTime.
+                </p>
+
+                <h3>1. Post-Route Routing Cleanup</h3>
+                <p>
+                    Before proceeding to extraction, the design must be clean. Perform the following checks to ensure the layout database is integrity-compliant:
+                </p>
+                <ul class="features-list">
+                    <li><strong>DRC Cleanup:</strong> Run <code>check_pg_drc -do_not_check_in_hier_blocks</code> to ensure power grid integrity.</li>
+                    <li><strong>LVS Verification:</strong> Validate netlist connectivity with <code>check_lvs -max_errors 0</code>.</li>
+                    <li><strong>Routing Integrity:</strong> Verify completion of all nets using <code>check_routes</code> to identify any shorts, opens, or floating wires.</li>
+                </ul>
+
+                <h3>2. Parasitic Extraction with StarRC</h3>
+                <p>
+                    Extract RC parasitics to generate the necessary files for accurate timing analysis.
+                </p>
+                <ul class="features-list">
+                    <li><strong>Directory Initialization:</strong> 
+                        <code>mkdir -p STARRC/{inputs,outputs/{spef,work},scripts}</code>
+                    </li>
+                    <li><strong>Script Usage:</strong> Utilize the automated scripts available in the <code>STARRC</code> folder.</li>
+                    <li><strong>Extraction Output:</strong> The process generates <code>cbest.spef</code> (for fast corner analysis) and <code>cworst.spef</code> (for slow corner analysis).</li>
+                    <li><strong>Handoff:</strong> Copy the extracted <code>cbest.spef</code> and <code>cworst.spef</code> files directly into the <code>PRIMETIME/inputs/</code> directory.</li>
+                </ul>
+
+                <h3>Skills Demonstrated</h3>
+                <ul class="features-list">
+                    <li>Physical Design Signoff</li>
+                    <li>Post-Route DRC/LVS/Connectivity Verification</li>
+                    <li>StarRC Parasitic Extraction (SPEF)</li>
+                    <li>Multi-Corner Extraction (Cbest/Cworst)</li>
+                    <li>STA Handoff Methodology</li>
+                    <li>ASIC Physical Signoff Flow</li>
+                </ul>
+
+                <h3>Key Achievement</h3>
+                <p>
+                    Established a <strong>clean, signoff-ready physical database</strong> by validating routing integrity and successfully 
+                    extracting <strong>Cbest/Cworst SPEF parasitics</strong>, ensuring silicon-accurate timing verification for the 
+                    <strong>mv_macro_engine</strong>.
+                </p>
+
+                <a href="https://github.com/Ajay-Mallesh/mv_macro_engine_project_files/tree/main/STARRC" target="_blank" class="btn">
+                    View STARRC SPEF Extraction Documentation on GitHub
+                </a>
+            </section>
+        </div>
+
+        <!-- PRIMETIME Page -->
+        <div id="PRIMETIME" class="page">
+            <section class="section">
+                <h2>Timing Analysis: PrimeTime Signoff</h2>
+                <p>
+                    This section details the critical <strong>Static Timing Analysis (STA) and signoff flow</strong> used to ensure the 
+                    <code>mv_macro_engine</code> meets all performance targets across multiple operating scenarios.
+                </p>
+
+                <h3>1. Post-Route Integrity Checks</h3>
+                <p>Before initiating signoff, the routed design must be clean:</p>
+                <ul class="features-list">
+                    <li><strong>DRC Cleanup:</strong> Fix all shorts, opens, and floating wires using <code>check_pg_drc -do_not_check_in_hier_blocks</code>.</li>
+                    <li><strong>LVS Verification:</strong> Validate netlist vs. layout with <code>check_lvs -max_errors 0</code>.</li>
+                    <li><strong>Route Verification:</strong> Confirm completion of all nets with <code>check_routes</code>.</li>
+                </ul>
+
+                <h3>2. StarRC Parasitic Extraction</h3>
+                <p>Extraction of RC parasitics is performed to feed accurate data into PrimeTime:</p>
+                <ul class="features-list">
+                    <li><strong>Workspace:</strong> <code>mkdir -p STARRC/{inputs,outputs/{spef,work},scripts}</code></li>
+                    <li><strong>Extraction:</strong> Use the dedicated scripts in the <code>STARRC</code> directory.</li>
+                    <li><strong>Output:</strong> Generates <code>cbest.spef</code> (for fast corner) and <code>cworst.spef</code> (for slow corner).</li>
+                    <li><strong>Handoff:</strong> Copy extracted SPEF files to <code>PRIMETIME/inputs/</code>.</li>
+                </ul>
+
+                <h3>3. PrimeTime Signoff Flow</h3>
+                <h4>Workspace Setup</h4>
+                <ul class="features-list">
+                    <li>Initialize: <code>mkdir -p PRIMETIME/{inputs,outputs,scripts,sessions}</code></li>
+                    <li>Read Routed Netlist: <code>write_verilog ./PRIMETIME/inputs/routed_netlist.v</code></li>
+                    <li>Export post-route SDCs (avoid ideal clocks): 
+                        <ul>
+                            <li>Setup: <code>write_sdc -scenarios func.ss_125c -output ./PRIMETIME/ss_125_clean.sdc</code></li>
+                            <li>Hold: <code>write_sdc -scenarios func.ff_m40c -output ./PRIMETIME/ff_m40_clean.sdc</code></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h4>Execution Stages</h4>
+                <ul class="features-list">
+                    <li><strong>Session Generation:</strong> Invoke <code>pt_shell</code>. Source <code>func_max.tcl</code> and <code>func_min.tcl</code> sessions independently. 
+                        <em>Note: Ensure <code>link_library</code> contains only 0.95V base cells, SRAMs, and Level Shifters to avoid scaling group crashes (SLG-303).</em></li>
+                    <li><strong>DMSA Execution:</strong> Invoke <code>pt_shell -multi_scenario</code> and execute the master <code>dmsa.tcl</code> script to close timing across all scenarios.</li>
+                    <li><strong>ECO Handoff:</strong> Export fixes using <code>write_changes -format icc2tcl -output ./outputs/Multi_scenario_final_eco.tcl</code>.</li>
+                </ul>
+
+                <h3>4. Final Implementation & Waivers</h3>
+                <p>After sourcing the ECO file in <code>icc2_shell</code>:</p>
+                <ul class="features-list">
+                    <li><strong>Incremental Fixes:</strong> Run <code>legalize_placement -incremental</code>, <code>route_eco</code>, and final DRC/LVS cleanup.</li>
+                    <li><strong>Waivers:</strong> 
+                        <ul>
+                            <li><strong>Hold Violations:</strong> ~5 fs hold violations are treated as OCV noise and waived, as forcing X2 buffers would break setup timing.</li>
+                            <li><strong>DRVs (Max_trans/cap):</strong> ICC2 TLU+ pessimism is overridden by PrimeTime 3D SPEF accuracy. Waive ICC2 DRVs in favor of PrimeTime signoff.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>Key Achievement</h3>
+                <p>
+                    Achieved <strong>timing closure and silicon-readiness</strong> for the <code>mv_macro_engine</code> by integrating accurate 
+                    StarRC parasitic extraction with PrimeTime's multi-scenario signoff, followed by a surgical ECO flow that ensures 
+                    both timing and manufacturing integrity.
+                </p>
+
+                <a href="https://github.com/Ajay-Mallesh/mv_macro_engine_project_files/tree/main/Prime_Time/Timing%20Analysis/scripts" target="_blank" class="btn">
+                    View PrimeTime Scripts on GitHub
+                </a>
+            </section>
+        </div>
+
+        <!-- MCMM Page -->
+        <div id="mcmm" class="page">
+            <section class="section">
+                <h2>MCMM Constraints - Multi-Corner Multi-Mode</h2>
+                <p>
+                    MCMM (Multi-Corner Multi-Mode) timing analysis is critical for ensuring robust physical design closure 
+                    across multiple operating conditions. This section provides comprehensive details on the MCMM setup and 
+                    constraint methodology used in the crypto_top project.
+                </p>
+
+                <h3>MCMM Overview</h3>
+                <p>
+                    Multi-Corner Multi-Mode analysis ensures that the design meets timing requirements across:
+                </p>
+                <ul class="features-list">
+                    <li><strong>Process Corners:</strong> FF (Fast-Fast) and SS (Slow-Slow)</li>
+                    <li><strong>Temperature Conditions:</strong> -40°C and 125°C</li>
+                    <li><strong>Operating Modes:</strong> Functional and Scan/Test</li>
+                    <li><strong>Voltage Domains:</strong> 0.95V and 0.75V</li>
+                </ul>
+
+                <h3>Corner Specifications</h3>
+                <table class="specs-table">
+                    <thead>
+                        <tr>
+                            <th>Corner</th>
+                            <th>Process</th>
+                            <th>Temperature</th>
+                            <th>Library</th>
+                            <th>Use Case</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>FF (-40°C)</td>
+                            <td>Fast-Fast</td>
+                            <td>-40°C</td>
+                            <td>saed32rvt_ss0p95v_m40c.db</td>
+                            <td>Best-case hold analysis</td>
+                        </tr>
+                        <tr>
+                            <td>SS (125°C)</td>
+                            <td>Slow-Slow</td>
+                            <td>125°C</td>
+                            <td>saed32rvt_ss0p95v125c.db</td>
+                            <td>Worst-case setup analysis</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Operating Modes</h3>
+                <h4>Functional Mode</h4>
+                <ul class="features-list">
+                    <li>Normal operational mode</li>
+                    <li>Encryption/decryption operations</li>
+                    <li>Core cryptographic functions active</li>
+                </ul>
+
+                <h4>Scan/Test Mode</h4>
+                <ul class="features-list">
+                    <li>Test/Debug operational mode</li>
+                    <li>Scan chain enabled</li>
+                    <li>Different timing characteristics due to scan path</li>
+                </ul>
+
+                <h3>MCMM Analysis Benefits</h3>
+                <ul class="features-list">
+                    <li>Comprehensive timing coverage across all operating conditions</li>
+                    <li>Detects timing failures that single-corner analysis might miss</li>
+                    <li>Ensures hold time compliance in best-case conditions</li>
+                    <li>Ensures setup time compliance in worst-case conditions</li>
+                    <li>Enables efficient multi-voltage timing closure</li>
+                    <li>Reduces silicon failure risk and improves reliability</li>
+                </ul>
+
+                <h3>Constraint Management in Physical Design</h3>
+                <p>
+                    During physical design stages (placement, CTS, routing), MCMM constraints guide:
+                </p>
+                <ul class="features-list">
+                    <li><strong>Placement Optimization:</strong> Cell placement to minimize critical path delays</li>
+                    <li><strong>Clock Tree Synthesis:</strong> Clock skew control across all corners</li>
+                    <li><strong>Routing:</strong> Wire routing prioritizing critical timing paths</li>
+                    <li><strong>Signoff Analysis:</strong> Final timing verification across all scenarios</li>
+                </ul>
+
+                <a href="https://github.com/Ajay-Mallesh/crypro_top_Project_Files/tree/main/Cryto_top_Project/Constraints/MCMM_PD_violations" target="_blank" class="btn">
+                    View MCMM Constraints on GitHub
+                </a>
+            </section>
+        </div>
+
+        <!-- MANUAL PAGE -->
+        <div id="manual" class="page">
+            <section class="section">
+                <h2>Manual & Documentation</h2>
+                <p>
+                    Comprehensive documentation for the Multi-Voltage Crypto Core project is available in multiple formats 
+                    to support different learning and reference preferences.
+                </p>
+
+                <h3>Available Resources</h3>
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h4>PDF Manual</h4>
+                        <p>
+                            Complete printed documentation covering all design aspects, flow descriptions, and reference materials. 
+                            Suitable for offline reference and detailed study.
+                        </p>
+                        <a href="https://github.com/Ajay-Mallesh/mv_macro_engine_project_files/blob/main/Manual/Multi_voltage%20Macro%20Manual.pdf" target="_blank" class="btn">
+                            Download PDF Manual
+                        </a>
+                    </div>
+                    <div class="content-card">
+                        <h4>Website Manual</h4>
+                        <p>
+                            Interactive web-based documentation with hyperlinks, search capability, and responsive design. 
+                            Provides detailed walkthroughs and tutorials.
+                        </p>
+                        <a href="https://ajay-mallesh.github.io/mv_macro_engine_manual_website/" target="_blank" class="btn">
+                            View Website Manual
+                        </a>
+                    </div>
+                </div>
+
+                <h3>Manual Contents</h3>
+                <p>Both manual formats include:</p>
+                <ul class="features-list">
+                    <li>Project overview and objectives</li>
+                    <li>Multi-voltage architecture explanation</li>
+                    <li>RTL design details and code walkthroughs</li>
+                    <li>UPF power intent specification guide</li>
+                    <li>Timing constraint development (SDC and MCMM)</li>
+                    <li>Synthesis flow and DFT insertion techniques</li>
+                    <li>Physical design implementation (floorplanning, placement, CTS, routing)</li>
+                    <li>Power planning and PDN design methodology</li>
+                    <li>Signoff and timing closure strategies</li>
+                    <li>ECO (Engineering Change Order) techniques</li>
+                    <li>Troubleshooting and optimization tips</li>
+                    <li>Tool command references and examples</li>
+                </ul>
+
+                <h3>Documentation Navigation Tips</h3>
+                <ul class="features-list">
+                    <li><strong>For First-Time Users:</strong> Start with the project overview and architecture sections</li>
+                    <li><strong>For RTL Engineers:</strong> Focus on RTL design and UPF specification sections</li>
+                    <li><strong>For Physical Design Engineers:</strong> Reference floorplanning through signoff sections</li>
+                    <li><strong>For Flow Automation:</strong> Review TCL script sections and tool command references</li>
+                    <li><strong>For Troubleshooting:</strong> Consult the physical design debugging and ECO sections</li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- EXTRA FILES PAGE -->
+        <div id="xtra-files" class="page">
+            <section class="section">
+                <h2>Extra Files & Resources</h2>
+                <p>
+                    Additional documentation, templates, and reference materials for the Multi-Voltage Crypto Core project.
+                </p>
+
+                <h3>Coming Soon</h3>
+                <p>
+                    Additional resources are being prepared and will be made available soon. This section will include:
+                </p>
+                <ul class="features-list">
+                    <li>Technology reference files and LEF/DEF templates</li>
+                    <li>Tool configuration files and setup scripts</li>
+                    <li>Design checklist and verification templates</li>
+                    <li>Performance benchmarking data and reports</li>
+                    <li>FAQs and troubleshooting guides</li>
+                    <li>Additional case studies and examples</li>
+                    <li>Video tutorials and workflow demonstrations</li>
+                </ul>
+
+                <h3>Project Repository</h3>
+                <p>
+                    For the complete and latest resources, visit the official GitHub repository:
+                </p>
+                <a href="https://github.com/Ajay-Mallesh/mv_macro_engine_project_files" target="_blank" class="btn github-btn">
+                    Visit GitHub Repository
+                </a>
+            </section>
+        </div>
+    </main>
+
+    <!-- ===================================================================
+         FOOTER
+         =================================================================== -->
+    <footer>
+        <div class="footer-content">
+            <!-- Left Section -->
+            <div class="footer-section">
+                <h4>Multi-Voltage Macro Engine</h4>
+                <p>Designed by AjayMallesh ©️</p>
+                <p>Multi-Voltage Macro Engine | Ver 1.0.0 | 14/07/2026</p>
+            </div>
+
+            
+
+            <!-- Center Section -->
+            <div class="footer-section">
+                <div class="kannada-text">
+                    <p>ವಿನ್ಯಾಸ : ಅಜಯ್ ಮಲ್ಲೇಶ್ ©️</p>
+                    <p>ಸಿರಿಗನ್ನಡಂ ಗೆಲ್ಗೆ ಸಿರಿಗನ್ನಡಂ ಬಾಳ್ಗೆ ❤️💛</p>
+                    <p>ಕರ್ನಾಟಕ ❤️💛 | Karnataka ❤️💛</p>
+                    <p>India | ಭಾರತ ❤️</p>
+                </div>
+            </div>
+
+            <!-- Right Section -->
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <div class="contact-icons">
+                    <a href="mailto:ajaynew96326@gmail.com" class="contact-link" title="Email">
+                        <img src="images/gmail.png" alt="Gmail" class="contact-icon">
+                    </a>
+                    <a href="https://www.linkedin.com/in/ajaymallesh" target="_blank" class="contact-link" title="LinkedIn">
+                        <img src="images/linkedin.png" alt="LinkedIn" class="contact-icon">
+                    </a>
+                    <a href="https://github.com/Ajay-Mallesh" target="_blank" class="contact-link" title="GitHub">
+                        <img src="images/github.png" alt="GitHub" class="contact-icon">
+                    </a>
+                </div>
+                
+<!-- Safe, lightweight counter that works perfectly offline & online -->
+                <div class="counter-contact-zone">
+                    <span class="counter-pulse-dot"></span>
+                    <span class="counter-text">Realtime Visitors:</span>
+                    <span id="visitor-digits" class="counter-digits">000001</span>
+                </div>
+
+                <script>
+                    async function updateGlobalCounter() {
+                        // 1. CHANGE THIS STRING TO SOMETHING NEW RIGHT NOW (e.g., 'ajay_cryptotop_launch_2026')
+                        // This instantly forces a fresh start at 000001 on the live cloud database!
+                        const namespace = 'ajay_mv_macro_engine_launch_final';
+                        const fallbackValue = 1; 
+                        
+                        try {
+                            // Hit the accurate global replacement database endpoint
+                            const response = await fetch(`https://countapi.mileshilliard.com/api/v1/hit/${namespace}`);
+                            const data = await response.json();
+                            
+                            // The mileshilliard API returns the number directly inside 'data.value'
+                            if(data && typeof data.value !== 'undefined') {
+                                document.getElementById('visitor-digits').innerText = String(data.value).padStart(6, '0');
+                                // Sync the local backup so it matches the cloud exactly
+                                localStorage.setItem('crypto_site_counter', data.value);
+                            } else {
+                                throw new Error();
+                            }
+                        } catch (error) {
+                            // Safe local backup logic if offline
+                            let count = parseInt(localStorage.getItem('crypto_site_counter')) || fallbackValue;
+                            count++;
+                            localStorage.setItem('crypto_site_counter', count);
+                            document.getElementById('visitor-digits').innerText = String(count).padStart(6, '0');
+                        }
+                    }
+
+                    updateGlobalCounter();
+                </script>
+            </div>
+        </div>
+
+<!-- ===================================================================
+     CYBERPUNK CONSOLE UPGRADED FOOTER BOTTOM
+     =================================================================== -->
+<div class="footer-bottom cyber-hud-footer">
+    
+    <!-- Left Side Emblem: Chaalukya -->
+    <div class="emblem-side-box side-left">
+        <a href="https://en.wikipedia.org/wiki/Chalukya_dynasty" target="_blank" rel="noopener noreferrer" class="emblem-footer-link" data-tag="Chalukya Emblem">
+            <div class="emblem-frame-wrapper">
+                <div class="hud-corner top-left"></div>
+                <div class="hud-corner top-right"></div>
+                <div class="hud-corner bottom-left"></div>
+                <div class="hud-corner bottom-right"></div>
+                <img src="images/Chalukya_Emblem.png" alt="Chalukya Emblem" class="emblem-footer-img">
+            </div>
+            <span class="emblem-footer-text"><span class="terminal-prefix">> </span>ಚಾಲುಕ್ಯ ಲಾಂಛನ</span>
+        </a>
+    </div>
+
+            <!-- Center Column Text Content -->
+            <div class="footer-bottom-text-center">
+                
+                <!-- Project Contributors Section Container -->
+                <div class="footer-contributors-section">
+                    <h4 class="contributors-title">Project Contributors</h4>
+                    <div class="contributors-grid">
+                        
+                        <!-- Contributor 1 -->
+                        <div class="contributor-item">
+                            <span class="contributor-name">1. Selva Prakash</span>
+                            <a href="https://www.linkedin.com/in/selva-prakash1911/" target="_blank" class="linkedin-link" title="Connect on LinkedIn">
+                                <img src="images/linkedin.png" alt="LinkedIn" class="linkedin-footer-icon">
+                            </a>
+                        </div>
+
+                        <!-- Contributor 2 -->
+                        <div class="contributor-item">
+                            <span class="contributor-name">2. Aviraj Dhale</span>
+                            <a href="https://www.linkedin.com/in/avirajdhale/" target="_blank" class="linkedin-link" title="Connect on LinkedIn">
+                                <img src="images/linkedin.png" alt="LinkedIn" class="linkedin-footer-icon">
+                            </a>
+                        </div>
+
+                        <!-- Contributor 3 -->
+                        <div class="contributor-item">
+                            <span class="contributor-name">3. Venkatesh Vattem</span>
+                            <a href="https://www.linkedin.com/in/venkateshvattem/" target="_blank" class="linkedin-link" title="Connect on LinkedIn">
+                                <img src="images/linkedin.png" alt="LinkedIn" class="linkedin-footer-icon">
+                            </a>
+                        </div>
+
+                        <!-- Contributor 4 -->
+                        <div class="contributor-item">
+                            <span class="contributor-name">4. Praveen</span>
+                            <a href="https://github.com/Ajay-Mallesh/mv_macro_engine_project_files" target="_blank" class="linkedin-link" title="Connect on LinkedIn">
+                                <img src="images/linkedin.png" alt="LinkedIn" class="linkedin-footer-icon">
+                            </a>
+                        </div>
+                        
+
+                    </div>
+                </div>
+
+                <!-- Pre-existing Core Copyright Metadata Row Links -->
+                <p class="copyright-line">© 2026 Ajay Mallesh <span class="divider-dash">|</span> Multi-Voltage Macro Engine <span class="divider-dash">|</span> All Rights Reserved</p>
+                <p class="disclaimer-line">This project is open-source and released for educational and non-commercial community use.</p>
+            </div>
+
+    <!-- Right Side Emblem: Kadamba -->
+    <div class="emblem-side-box side-right">
+        <a href="https://en.wikipedia.org/wiki/Kadamba_dynasty" target="_blank" rel="noopener noreferrer" class="emblem-footer-link" data-tag="Kadamba Emblem">
+            <div class="emblem-frame-wrapper">
+                <div class="hud-corner top-left"></div>
+                <div class="hud-corner top-right"></div>
+                <div class="hud-corner bottom-left"></div>
+                <div class="hud-corner bottom-right"></div>
+                <img src="images/Kadamba_Emblem.png" alt="Kadamba Emblem" class="emblem-footer-img">
+            </div>
+            <span class="emblem-footer-text"><span class="terminal-prefix">> </span>ಕದಂಬ ಲಾಂಛನ</span>
+        </a>
+    </div>
+
+    <!-- Back to Top Trigger Button -->
+    <button class="back-to-top" id="backToTop" title="Back to Top">↑</button>
+</div>
+
+<!-- ===================================================================
+         WELCOME LOGO POPUP OVERLAY
+         =================================================================== -->
+    <div id="welcomePopup" class="popup-overlay">
+        <div class="popup-content-console">
+            <span class="console-corner-tag">[ Hiiii ]</span>
+            <button id="closePopupBtn" class="popup-x-btn" aria-label="Close Terminal">✕</button>
+            
+            <div class="popup-logo-container">
+                <img src="images/MV_MACRO_LOGO_original.png" alt="Multi-Voltage Macro Engine Logo" class="popup-logo-square">
+            </div>
+            
+            <h2 class="popup-title">Multi-Voltage Macro Engine</h2>
+            <h3 class="popup-subtitle">Welcome Physical Design Engineer</h3>
+            
+            <div class="popup-info-row">
+                <span class="info-bullet">■</span>
+                <p class="popup-info-text">The Original Website to get Physical Design project files.</p>
+                <span class="info-bullet">■</span>
+            </div>
+            
+            <p class="popup-author-text">// Designed by a Physical Design Engineering Student</p>
+            
+            <div class="popup-tagline-wrapper">
+                <p class="popup-tagline">INITIALIZING MV MACRO ENGINE ENVIRONMENT.................</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+</body>
+</html>
