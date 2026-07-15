@@ -204,8 +204,8 @@ Edit navbar items in `index.html`:
 
 **Author**: Ajay Mallesh  
 **Reviewer**: Gemini Pro 3.1 & Ajay Mallesh  
-**Version**: 1.0.0  
-**Date**: 14/07/2026
+**Version**: 1.1.0  
+**Date**: 15/07/2026
 
 **Email**: ajaymalavalli912@gmail.com  
 **LinkedIn**: www.linkedin.com/in/ajaymallesh  
@@ -238,6 +238,15 @@ For questions, issues, or contributions:
 
 
 ## Changelog
+
+### [1.1.0] - 15/07/2026
+
+#### Added
+- Added a new footer project promotion link for the Multi-Voltage Crypto Core website.
+- Added a dedicated Xtra Files resource section describing macro and port physical location extraction workflows.
+
+#### Changed
+- Updated the site metadata and changelog to version `1.1.0` with date `15/07/2026`.
 
 ### [1.0.0] - 14/07/2026
 
@@ -284,10 +293,10 @@ For questions, issues, or contributions:
 - Fixed an overflow layout issue across diverse desktop configurations by expanding container width allowances up to `680px`, ensuring text rows sit locked strictly on a single layout line.
 - Resolved a duplicate border overlapping artifact by isolating the sharp single accent border to the logo graphic itself while vaporizing inherited canvas outlines on the parent logo container wrapper.
 - Implemented a smart `@media` layout fallback mechanism for tablet and small-screen mobile viewports to prevent narrow layout text clipping on compact, portrait displays.
-- Patched a critical text wrap collision bug where enlarged English strings (e.g., `"Gandabherunda Emblem"`) would break onto two rows and directly overlap the top edges of the image container.
+- Patched a critical text wrap collision bug where enlarged English strings (e.g., `"Kadamba Emblem"`) would break onto two rows and directly overlap the top edges of the image container.
 - Resolved text crowding constraints by increasing the emblem frame wrapper's bottom margin to `14px` and introducing an explicit `10px` top margin, establishing clean breathing room around the larger typography blocks.
 - **Icon Compression Flattening**: Hardened physical rendering dimensions (`min-width`, `max-width`, `min-height`, `max-height`) to completely halt the flexible viewport squeezing and horizontal distortion occurring on the graphics.
 - **Asset Text Overflow Padding**: Resolved a deep horizontal phantom gap layout defect by implementing a negative pixel offset shift tracking margin (`margin-left: -58px`), successfully realigning the visible blue logo square flush against the end of the engineer's name strings.
 
-**Last Updated**: 14/07/2026  
-**Website Version**: 1.0.0
+**Last Updated**: 15/07/2026  
+**Website Version**: 1.1.0

@@ -108,8 +108,8 @@
         </div>
         <div class="meta-card">
             <h3>Version Info</h3>
-            <p><strong>Version:</strong> 1.0.0 (2026)</p>
-            <p><strong>Date:</strong> 14/07/2026</p>
+            <p><strong>Version:</strong> 1.1.0 (2026)</p>
+            <p><strong>Date:</strong> 15/07/2026</p>
         </div>
         <div class="meta-card">
             <h3>GitHub Repository</h3>
@@ -1318,7 +1318,7 @@
         </div>
 
         <!-- Setup Fixes Page -->
-        <div id="setup/hold-fixes" class="page-section">
+        <div id="setup/hold-fixes" class="page">
             <section class="section">
                 <h2>Setup and Hold Fixes</h2>
                 <p>
@@ -1653,10 +1653,70 @@
             <section class="section">
                 <h2>Extra Files & Resources</h2>
                 <p>
-                    Additional documentation, templates, and reference materials for the Multi-Voltage Crypto Core project.
+                    Additional documentation, templates, and reference materials for the Multi-Voltage Macro Engine project.
                 </p>
 
-                <h3>Coming Soon</h3>
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h4>Macro and Port Location Extraction Script</h4>
+                        <p>
+                            This Tcl-based utility extracts the physical X/Y locations of hard macros and I/O ports into simple text files, making floorplan reuse, ECO migration, and layout backup much faster and more reliable.
+                        </p>
+                        <ul class="features-list">
+                            <li>Captures port locations from <code>bbox</code> data into a reusable file</li>
+                            <li>Captures hard macro origin points from <code>origin</code> data for placement restoration</li>
+                            <li>Useful for floorplan preservation, hierarchical top-down design, and cross-tool workflow portability</li>
+                        </ul>
+
+                        <p class="resource-note">
+                            In physical design, this is valuable because a floorplan can be lost during a tool crash, netlist update, or fresh implementation run. With the extracted coordinates, you can restore the layout in minutes instead of redoing manual placement.
+                        </p>
+
+                        <h5>Advantages</h5>
+                        <ul class="features-list">
+                            <li><strong>Floorplan preservation:</strong> protects your macro and port placement from being lost during crashes or re-runs</li>
+                            <li><strong>ECO-friendly:</strong> helps carry forward placement when netlists are updated</li>
+                            <li><strong>Hierarchical reuse:</strong> enables top-down design teams to share the same placement blueprint</li>
+                            <li><strong>Cross-tool compatibility:</strong> stores data in a simple text format that can be reused across EDA flows</li>
+                        </ul>
+
+                        <h5>Flexibility and Extensions</h5>
+                        <ul class="features-list">
+                            <li>Filter only specific macros such as SRAMs or RAM-based blocks</li>
+                            <li>Capture orientation data if rotated or flipped macros are important</li>
+                            <li>Generate direct placement commands instead of plain coordinates</li>
+                            <li>Adapt the output format for custom Python, Perl, or Tcl-based automation</li>
+                        </ul>
+
+                        <h5>Example Tcl Flow</h5>
+                        <pre class="resource-code"><code># Extract Ports to a clean file
+set p_fp [open "./docs/port_locations.tcl" "w"]
+foreach_in_collection port [get_ports] {
+    set box [get_attribute $port bbox]
+    if {$box != ""} {
+        set loc [lindex $box 0]
+        puts $p_fp "[get_object_name $port] $loc"
+    }
+}
+close $p_fp
+
+# Extract Macros to a clean file
+set m_fp [open "./docs/macro_locations.tcl" "w"]
+foreach_in_collection cell [get_cells -hierarchical -filter "is_hard_macro"] {
+    set loc [get_attribute $cell origin]
+    if {$loc != ""} {
+        puts $m_fp "[get_object_name $cell] $loc"
+    }
+}
+close $m_fp</code></pre>
+
+                        <a href="https://github.com/Ajay-Mallesh/mv_macro_engine_project_files/blob/main/scripts/macro_and_ports_coordinates_extraction/macro_and_ports_extraction.tcl" target="_blank" class="btn">
+                            Open Script on GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <h3>More Resources Coming Soon</h3>
                 <p>
                     Additional resources are being prepared and will be made available soon. This section will include:
                 </p>
@@ -1690,7 +1750,10 @@
             <div class="footer-section">
                 <h4>Multi-Voltage Macro Engine</h4>
                 <p>Designed by AjayMallesh ©️</p>
-                <p>Multi-Voltage Macro Engine | Ver 1.0.0 | 14/07/2026</p>
+                <p>Multi-Voltage Macro Engine | Ver 1.1.0 | 15/07/2026</p>
+                <div class="footer-more-projects">
+                    <p><strong>More projects:</strong> <a href="https://ajay-mallesh.github.io/crypro_top_website/" target="_blank">Multi-Voltage Crypto Core</a></p>
+                </div>
             </div>
 
             

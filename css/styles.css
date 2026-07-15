@@ -428,10 +428,41 @@
     font-size: 1.1rem;
   }
 
+  .content-card h5 {
+    color: var(--text-primary);
+    margin: 1.2rem 0 0.6rem;
+    font-size: 1rem;
+  }
+
   .content-card p {
     color: var(--text-secondary);
     font-size: 0.95rem;
     line-height: 1.6;
+  }
+
+  .resource-note {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-top: 0.75rem;
+  }
+
+  .resource-code {
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--highlight-color);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0 1.2rem;
+    overflow-x: auto;
+  }
+
+  .resource-code code {
+    color: #f8f8f2;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    white-space: pre;
   }
 
   /* ===================================================================
@@ -614,6 +645,30 @@
 
   .footer-bottom p {
     margin: 0.5rem 0;
+  }
+
+  .footer-more-projects {
+    text-align: center;
+    margin: 1rem 0 2rem;
+    color: var(--text-secondary);
+  }
+
+  .footer-more-projects p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .footer-more-projects a {
+    color: var(--highlight-color);
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.3s ease;
+  }
+
+  .footer-more-projects a:hover {
+    color: var(--text-primary);
+    text-shadow: 0 0 10px rgba(217, 177, 58, 0.5);
   }
 
   .kannada-text {
